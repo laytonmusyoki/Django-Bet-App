@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="form">
+    <form action="" method="POST">
+        {% if form.errors %}
+            <p>Wrong username or password</p>
+        {% else %}
+            <p>Type in username and password to login</p>
+        {% endif %}
+        {% csrf_token %}
+        {% for field in form %}
+            {{ field.label_tag }}<br>
+            {{ field }}<br>
+        {% endfor %}
+        <br>
+        <input type="submit" value="Login">
+    </form>
+    <p>
+        <strong>Not registered? <a href="{% url 'register' %}">Register now</a></strong>
+    </p>
+</div>
+{% endblock %}

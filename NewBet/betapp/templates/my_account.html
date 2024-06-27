@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<p>Username: {{ user.username }}</p>
+<p>Email {{ user.email }}</p>
+<p>Cash: {{ app_user.cash }} PLN</p>
+
+    <table border="2">
+        <tr>
+            <th>Fixture</th>
+            <th>Result</th>
+            <th>Bet</th>
+            <th>Course</th>
+            <th>Bet Amount</th>
+            <th>Matchday</th>
+            <th>Status</th>
+            <th>Result</th>
+        </tr>
+        {% for bet in bets %}
+        <tr>
+            <td>{{ bet.fixture }}</td>
+            <td>{{ bet.fixture.goals_home_team }} - {{ bet.fixture.goals_away_team }}</td>
+            <td>{{bet.bet}}</td>
+            <td>{{bet.bet_course}}</td>
+            <td>{{ bet.bet_amount }} PLN</td>
+            <td>{{ bet.fixture.matchday }}</td>
+            <td>{{ bet.fixture.get_status_display }}</td>
+            <td>{{ bet.get_bet_result_display }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+<a href="{% url 'competitions' %}">Competitions</a>
+{% endblock %}

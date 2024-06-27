@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% for message in messages %}
+    <p>{{ message }}</p>
+{% endfor %}
+<div class="form">
+    <h3>F I X T U R E</h3>
+    <p>Sides: {{ fixture.home_team.name }} - {{ fixture.away_team.name }}</p>
+    <p>
+        Courses:<br>
+        <strong>1X:</strong> {{ fixture.course_team_home_win }} |
+        <strong>0X:</strong> {{ fixture.course_draw }} |
+        <strong>2X:</strong> {{ fixture.course_team_away_win }}
+    </p>
+    <p>Date: {{ fixture.date }}</p>
+    <form action="" method="POST">
+        {% csrf_token %}
+        {% for field in form %}
+            {{ field.label_tag }}<br>
+            {{ field }}<br>
+        {% endfor %}
+        <br>
+        <input type="submit" value="Make bet">
+    </form>
+</div>
+{% endblock %}

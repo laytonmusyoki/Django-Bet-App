@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{{ competition.caption }}</h1>
+{% include "links.html" %}
+{% include "fixtures_filter.html" %}
+{% include "list_fixtures.html" with fixtures=finished_fixtures %}
+{% endblock %}
